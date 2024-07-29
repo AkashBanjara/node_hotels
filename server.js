@@ -49,7 +49,9 @@ const menuItem = require("./models/menuItem.js");
 const personRoutes = require("./routes/personRoutes.js");
 const menuRoutes = require("./routes/menuItemRoutes.js");
 const app = express();
-const port = 3000;
+require('dotenv').config();
+const PORT = process.env.PORT || 3000
+
 
 app.use(bodyParser.json()); //req.body
 
@@ -62,7 +64,9 @@ app.get("/", (req, res) => {
 app.use("/person", personRoutes)
 app.use("/menu", menuRoutes)
 
+
+
 db();  //connecting database to server
-app.listen(port, () => {
-  console.log(`server is listening on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`server is listening on http://localhost:${PORT}`);
 });
